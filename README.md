@@ -1,16 +1,86 @@
-# myapp
+📱 Descrição do Projeto
+Nome sugerido: Simulador de Investimentos - Paciência Financeira
+🎯 Objetivo
+Permitir que o usuário veja quanto dinheiro ele acumulará ao investir um valor fixo mensal, por um número fixo de meses, com uma taxa de juros mensal.
+O app mostrará:
 
-A new Flutter project.
+O montante sem juros (soma dos depósitos);
 
-## Getting Started
+O montante com juros compostos (crescimento real do investimento).
 
-This project is a starting point for a Flutter application.
+🛠️ Tecnologias Utilizadas
+Tecnologia	Função principal
+Dart	Lógica da aplicação
+Flutter	Interface gráfica do app
+Firebase	Armazenamento de simulações anteriores (opcional)
+Firestore	Base de dados em nuvem
+Firebase CLI	Testes locais / deploy web ou mobile
 
-A few resources to get you started if this is your first Flutter project:
+🧮 Fórmula e Lógica com Repetição
+Usaremos um laço de repetição (for loop) para simular o crescimento do capital com aportes mensais e juros compostos, como em uma planilha de Excel.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Fórmulas:
+Sem juros:
+totalSemJuros = valorMensal × meses
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Com juros compostos e aportes mensais:
+
+dart
+Copiar
+Editar
+double montante = 0;
+for (int i = 0; i < meses; i++) {
+  montante = (montante + valorMensal) * (1 + taxaJuros);
+}
+📲 Entradas do Usuário
+Valor mensal a ser investido;
+
+Número de meses;
+
+Taxa de juros mensal (%).
+
+📊 Saídas do App
+Total investido (sem juros);
+
+Total com juros compostos;
+
+(Opcional) Mostrar evolução mês a mês.
+
+⚙️ Como executar o projeto (Flutter + Firebase)
+Se você já seguiu o passo a passo anterior para configurar Firebase no Flutter, pode reaproveitar a base e adicionar essa nova funcionalidade como outra aba/página no app.
+
+🚧 Exemplo de lógica completa em Dart:
+dart
+Copiar
+Editar
+double calcularSemJuros(double valorMensal, int meses) {
+  return valorMensal * meses;
+}
+
+double calcularComJuros(double valorMensal, double taxaJuros, int meses) {
+  double montante = 0;
+  for (int i = 0; i < meses; i++) {
+    montante = (montante + valorMensal) * (1 + taxaJuros);
+  }
+  return montante;
+}
+🧾 (Opcional) Salvar simulações no Firestore
+dart
+Copiar
+Editar
+FirebaseFirestore.instance.collection('investimentos').add({
+  'mensal': valorMensal,
+  'meses': meses,
+  'taxa': taxaJuros,
+  'total_sem_juros': totalSemJuros,
+  'total_com_juros': totalComJuros,
+  'data': Timestamp.now(),
+});
+▶️ Executar o app
+bash
+Copiar
+Editar
+flutter run
+
+
+
