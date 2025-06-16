@@ -1,4 +1,6 @@
 📱 Descrição do Projeto
+
+
 Nome sugerido: Simulador de Investimentos - Paciência Financeira
 🎯 Objetivo
 Permitir que o usuário veja quanto dinheiro ele acumulará ao investir um valor fixo mensal, por um número fixo de meses, com uma taxa de juros mensal.
@@ -83,4 +85,5 @@ Editar
 flutter run
 
 
+![investimento](https://github.com/user-attachments/assets/3f874495-784f-46e4-ad9f-a7abf77849ad)
 
